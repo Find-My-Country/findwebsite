@@ -4,43 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Find Your Country</title>
-  <link rel="stylesheet" href="css.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="container">
-    <h1>🌐</h1>
-    <h1>Find Your Country 🌍</h1>
-    <p>Enter a country name to find its information and play a flag guessing game!</p>
- 
+<body class="bg-blue-50 text-blue-900 min-h-screen">
+
+  <div class="max-w-2xl mx-auto p-6">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-5xl mb-2">🌐</h1>
+      <h1 class="text-3xl font-bold mb-2 text-blue-800">Find Your Country 🌍</h1>
+      <p class="text-lg text-blue-600">Enter a country name to find its information and play a flag guessing game!</p>
+    </div>
 
     <!-- Search Section -->
-    <div class="search-section">
-
-      <input type="text" id="countryInput" placeholder="Enter country name" />
-      <button onclick="searchCountry()">Search</button>
+    <div class="mb-8">
+      <div class="flex gap-2">
+        <input type="text" id="countryInput" placeholder="Enter country name" 
+               class="flex-1 p-2 border border-blue-300 rounded bg-blue-100 placeholder-blue-400" />
+        <button onclick="searchCountry()" 
+                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Search</button>
+      </div>
     </div>
 
     <!-- Display Country Info -->
-    <div id="countryInfo" class="info-box"></div>
+    <div id="countryInfo" class="bg-blue-100 text-blue-800 p-4 rounded shadow mb-8 hidden border border-blue-300"></div>
 
     <!-- Flag Guessing Game -->
-    <div class="game-section">
-      
-      <h2>Guess the Country by Flag</h2>
-      
-      <input type="text" id="guessInput" placeholder="Your guess" />
-      <button onclick="submitGuess()">Submit Guess</button>
-      <button onclick="loadRandomFlag()">Try Another</button>
-      <button class="hint-btn">💡 Hint</button>
-      <p id="guessResult"></p>
+    <div class="bg-blue-100 p-4 rounded shadow border border-blue-300">
+      <h2 class="text-xl font-semibold mb-4 text-blue-800">Guess the Country by Flag</h2>
+
+      <div class="flex flex-wrap gap-2 mb-4">
+        <input type="text" id="guessInput" placeholder="Your guess" 
+               class="flex-1 p-2 border border-blue-300 rounded bg-blue-50 placeholder-blue-400" />
+        <button onclick="submitGuess()" 
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit Guess</button>
+        <button onclick="loadRandomFlag()" 
+                class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500">Try Another</button>
+        <button class="hint-btn bg-blue-300 text-white px-4 py-2 rounded hover:bg-blue-400">💡 Hint</button>
+      </div>
+
+      <p id="guessResult" class="text-lg text-blue-700"></p>
     </div>
   </div>
-<script src="task1.js"></script>
-<script src="task2.js"></script>
-<script src="task3.js"></script>
-<script src="task4.js"></script>
-<script src="task5.js"></script>
+
+  <!-- Scripts -->
+  <script src="task1.js"></script>
+  <script src="task2.js"></script>
+  <script src="task3.js"></script>
+  <script src="task4.js"></script>
+  <script src="task5.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
-
