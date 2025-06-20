@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Your Country</title>
+  <link rel="stylesheet" href="css.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🌐</h1>
+    <h1>Find Your Country 🌍</h1>
+    <p>Enter a country name to find its information and play a flag guessing game!</p>
+ 
+
+    <!-- Search Section -->
+    <div class="search-section">
+
+      <input type="text" id="countryInput" placeholder="Enter country name" />
+      <button onclick="searchCountry()">Search</button>
+    </div>
+
+    <!-- Display Country Info -->
+    <div id="countryInfo" class="info-box"></div>
+
+    <!-- Flag Guessing Game -->
+    <div class="game-section">
+      
+      <h2>Guess the Country by Flag</h2>
+      
+      <input type="text" id="guessInput" placeholder="Your guess" />
+      <button onclick="submitGuess()">Submit Guess</button>
+      <button onclick="loadRandomFlag()">Try Another</button>
+      <button class="hint-btn">💡 Hint</button>
+      <p id="guessResult"></p>
+    </div>
+  </div>
+<script src="task1.js"></script>
+<script src="task2.js"></script>
+<script src="task3.js"></script>
+<script src="task4.js"></script>
+<script src="task5.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
