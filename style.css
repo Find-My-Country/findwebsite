@@ -1,0 +1,73 @@
+*{
+    margin: 0; padding: 0; box-sizing: 0; font-family: sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0eefe;
+}
+.container{
+    width: 30%;
+    padding: 10px;
+}
+.container .card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+}
+.container .card .logo_country{
+    font-size: 1.5em;
+    text-align: center;
+    color: blue;
+}
+.container .card .title h1{
+    text-align: center;
+}
+.container .card .title p{
+    text-align: center;
+    color: rgba(25, 24, 24, 0.861);
+    margin-top: 10px;
+    font-size: 13px;
+}
+.container .card .search_bar{
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 30px;
+}
+.container .card .search_bar input{
+    width: 90%;
+   outline: none;
+   border: none;
+   font-size: 13px;
+   font-weight: 700;
+   margin-left: 5px;
+}
+.container .card .image{
+    width: 100%;
+}
+.container .card .image img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px 10px 0px 0px;
+}
+.container .card .info{
+    font-size: 13px;
+   padding: 10px;
+}
+.container #country-info{
+    background-color: white;
+    border-radius: 10px;
+}
+.container .card .info span:last-child{
+    font-weight: 900;
+}
+.container .card .info i{
+    color: rgba(77, 77, 224, 0.919);
+}

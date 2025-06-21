@@ -10,7 +10,6 @@
 
 
 
-
 //✅ Task 2: Country Search Feature
 // Create search input on the main page
 // Users type country name here
@@ -23,6 +22,73 @@
 
 // Add a link or button labeled "View on Map"
 // When clicked, open Google Maps with the country's location
+
+const searchInput = document.getElementById("searchInput");
+const countryInfoDiv = document.getElementById("country-info");
+
+searchInput.addEventListener("keyup", (e) => {
+  const query = e.target.value.trim();
+
+  if (query.length === 0) {
+    countryInfoDiv.innerHTML = "";
+    return;
+  }
+
+  fetch(`https://restcountries.com/v3.1/name/${query}`)
+    .then(res => {
+      if (!res.ok) throw new Error("Country not found");
+      return res.json();
+    })
+    .then(data => {
+      const country = data[0];
+
+      const flag = country.flags.svg || country.flags.png;
+      const name = country.name.common;
+      const capital = country.capital?.[0] || "N/A";
+      const population = country.population.toLocaleString();
+      const languages = Object.values(country.languages || {}).join(", ");
+      const currency = Object.values(country.currencies || {})[0]?.name || "N/A";
+      const lat = country.latlng?.[0] || 0;
+      const lng = country.latlng?.[1] || 0;
+      const mapLink = `https://www.google.com/maps?q=${lat},${lng}`;
+      countryInfoDiv.innerHTML = `
+        <div class="image">
+          <img src="${flag}" alt="${name} flag">
+          <div class="info">
+            <h2>${name}</h2>
+          </div>
+          <div class="info">
+            <i class="fa-solid fa-landmark"></i>
+            <span>Capital:</span>
+            <span>${capital}</span>
+          </div>
+          <div class="info">
+            <i class="fa-solid fa-user-group"></i>
+            <span>Population:</span>
+            <span>${population}</span>
+          </div>
+          <div class="info">
+            <i class="fa-solid fa-language"></i>
+            <span>Languages:</span>
+            <span>${languages}</span>
+          </div>
+          <div class="info">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <span>Currencies:</span>
+            <span>${currency}</span>
+          </div>
+          <div class="info">
+            <i class="fa-solid fa-earth-europe"></i>
+            <a href="${mapLink}" target="_blank" style="color: #007bff; text-decoration: underline;">View on Maps</a>
+          </div>
+        </div>
+      `;
+    })
+    .catch(() => {
+      countryInfoDiv.innerHTML = `<p style="color:red;">Country not found. Try again.</p>`;
+    });
+});
+
 
 
 
