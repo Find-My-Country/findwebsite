@@ -10,6 +10,9 @@ body{
 .container{
     width: 30%;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 .container .card{
     width: 100%;
@@ -18,6 +21,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 15px;
+    border-radius: 10px;
 
 }
 .container .card .logo_country{
@@ -58,8 +62,11 @@ body{
     border-radius: 10px 10px 0px 0px;
 }
 .container .card .info{
-    font-size: 13px;
-   padding: 10px;
+    font-size: 12px;
+   padding: 10px 20px;
+}
+.container .card .info h2{
+    font-size: 2em;
 }
 .container #country-info{
     background-color: white;
@@ -70,4 +77,62 @@ body{
 }
 .container .card .info i{
     color: rgba(77, 77, 224, 0.919);
+}
+.container .card .Guess-country{
+    width: 100%;
+    border-radius: 10px;
+    /* background-color: red; */
+}
+.container .card .Guess-country img{
+    width: 100%;
+    height: 200px;
+}
+.container .card  .flaginput{
+    padding: 10px 20px;
+}
+.container .card .Guess-country .flaginput input{
+    width: 100%;
+    height: 33px;
+    font-size: 15px;
+    font-weight: 700;
+    outline: none;
+}
+.container .card .Guess-country .btn{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+.container .card .Guess-country .btn button{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 0;
+}
+.container .card .Guess-country .btn button i{
+    margin-right: 5px;
+}
+.container .card .Guess-country .btn button:last-child{
+    width: 20%;
+    margin-right: 20px;
+}
+.container .card .Guess-country .btn button:first-child{
+    margin-left: 20px;
+    background-color:hsl(217.22deg 91.22% 59.8%);
+    color: white;
+}
+.container .card .Guess-country .othercountrybtn{
+    padding: 0 20px;
+}
+
+.container .card .Guess-country .othercountrybtn button{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#Guess{
+    background-color: white;
 }
