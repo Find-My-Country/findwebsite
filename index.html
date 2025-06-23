@@ -1,58 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Find Your Country</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>find your country</title>
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
 </head>
-<body class="bg-blue-50 text-blue-900 min-h-screen">
-
-  <div class="max-w-2xl mx-auto p-6">
-    <!-- Header -->
-    <div class="text-center mb-8">
-      <h1 class="text-5xl mb-2">🌐</h1>
-      <h1 class="text-3xl font-bold mb-2 text-blue-800">Find Your Country 🌍</h1>
-      <p class="text-lg text-blue-600">Enter a country name to find its information and play a flag guessing game!</p>
-    </div>
-
-    <!-- Search Section -->
-    <div class="mb-8">
-      <div class="flex gap-2">
-        <input type="text" id="countryInput" placeholder="Enter country name" 
-               class="flex-1 p-2 border border-blue-300 rounded bg-blue-100 placeholder-blue-400" />
-        <button onclick="searchCountry()" 
-                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Search</button>
+<body>
+  <!-- container -->
+   <div class="container">
+      <!-- top_bar -->
+    <div class="card">
+      <div class="logo_country">
+        <i class="fa-solid fa-globe"></i>
       </div>
-    </div>
-
-    <!-- Display Country Info -->
-    <div id="countryInfo" class="bg-blue-100 text-blue-800 p-4 rounded shadow mb-8 hidden border border-blue-300"></div>
-
-    <!-- Flag Guessing Game -->
-    <div class="bg-blue-100 p-4 rounded shadow border border-blue-300">
-      <h2 class="text-xl font-semibold mb-4 text-blue-800">Guess the Country by Flag</h2>
-
-      <div class="flex flex-wrap gap-2 mb-4">
-        <input type="text" id="guessInput" placeholder="Your guess" 
-               class="flex-1 p-2 border border-blue-300 rounded bg-blue-50 placeholder-blue-400" />
-        <button onclick="submitGuess()" 
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit Guess</button>
-        <button onclick="loadRandomFlag()" 
-                class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500">Try Another</button>
-        <button class="hint-btn bg-blue-300 text-white px-4 py-2 rounded hover:bg-blue-400">💡 Hint</button>
+      <div class="title">
+        <h1>Find Your Country</h1>
+        <p>Explore countries around the world and test your geography knowledge</p>
       </div>
-
-      <p id="guessResult" class="text-lg text-blue-700"></p>
+      <div class="search_bar">
+        <div class="icon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="searchInput" type="text" placeholder="search your country">
+        </div>
     </div>
   </div>
+    <!-- end top bar -->
 
-  <!-- Scripts -->
-  <script src="task1.js"></script>
-  <script src="task2.js"></script>
-  <script src="task3.js"></script>
-  <script src="task4.js"></script>
-  <script src="task5.js"></script>
-  <script src="app.js"></script>
+     <!-- country info -->
+     <div id="country-info" class="card">
+       <!-- <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Flag_of_Somalia.svg" alt="">
+         <div class="info">
+          <h2>Somalia</h2>
+         </div>
+         <div class="info">
+          <i class="fa-solid fa-landmark"></i>
+          <span>capital:</span>
+          <span>mogadishu</span>
+         </div>
+         <div class="info">
+          <i class="fa-solid fa-user-group"></i>
+          <span>population:</span>
+          <span>mogadishu</span>
+         </div>
+         <div class="info">
+          <i class="fa-solid fa-language"></i>
+          <span>languages:</span>
+          <span>mogadishu</span>
+         </div>
+         <div class="info">
+          <i class="fa-solid fa-money-bill-wave"></i>
+          <span>currencies:</span>
+          <span>mogadishu</span>
+         </div>
+         <div class="info">
+          <i class="fa-solid fa-earth-europe"></i>
+          <a href="">view on maps</a>
+         </div>
+       </div> -->
+     </div>
+
+     <div id="Guess" class="card">
+      <div class="Guess-country">
+        <div class="info">
+        <h2>Guess the country!</h2>
+        </div>
+        <img src="https://flagandbuntingstore.co.uk/cdn/shop/files/spainmat__55604.1738246323.1280.1280.jpg?v=1739973537" alt="">
+      <div class="flaginput">
+        <input type="text" placeholder="Enter your guess">
+      </div>
+      <div class="btn">
+        <button> <i class="fa-regular fa-paper-plane"></i>Submit Guess </button>
+        <button> <i class="fa-regular fa-lightbulb"></i>Hint </button>
+      </div>
+      <div class="othercountrybtn">
+        <button>Try another country</button>
+       </div>
+     </div>
+     </div>
+   </div>
+   <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
