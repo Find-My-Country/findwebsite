@@ -108,6 +108,75 @@ searchInput.addEventListener("keyup", (e) => {
 // Add "Try Another" button to fetch a new random flag
 // This resets the game and shows a different country
 
+const flagImage = document.querySelector("#Guess img");
+const inputGuess = document.querySelector(".flaginput input");
+const submitButton = document.querySelector("#submitGuess");
+const hintButton = document.querySelector("#hintBtn");
+const tryAnotherButton = document.querySelector("#anotherBtn");
+
+let correctCountry = "";
+let hintUsed = false;
+
+function getRandomCountry() {
+  fetch("https://restcountries.com/v3.1/all")
+    .then(res => {
+      if (!res.ok) throw new Error("API Error");
+      return res.json();
+    })
+    .then(data => {
+      
+      const validCountries = data.filter(
+        c => c.flags?.svg && c.name?.common
+      );
+
+      if (validCountries.length === 0) {
+        alert("Failed to load countries.");
+        return;
+      }
+
+      const randomIndex = Math.floor(Math.random() * validCountries.length);
+      const country = validCountries[randomIndex];
+
+      correctCountry = country.name.common;
+      flagImage.src = country.flags.svg;
+      flagImage.alt = `${correctCountry} flag`;
+      inputGuess.value = "";
+      hintUsed = false;
+
+      console.log("Selected country:", correctCountry);
+    })
+    .catch(error => {
+      console.error("Fetch error:", error);
+      alert("Something went wrong while loading countries.");
+    });
+}
+
+submitButton.addEventListener("click", () => {
+  const userGuess = inputGuess.value.trim().toLowerCase();
+  if (!userGuess) return;
+
+  if (userGuess === correctCountry.toLowerCase()) {
+    alert("Correct!");
+    getRandomCountry();
+  } else {
+    alert("Incorrect. please Try again.");
+  }
+});
+
+hintButton.addEventListener("click", () => {
+  if (correctCountry) {
+    const hint = correctCountry[0] + "*".repeat(correctCountry.length - 1);
+    alert(`Hint: ${hint}`);
+    hintUsed = true;
+  }
+});
+
+tryAnotherButton.addEventListener("click", () => {
+  getRandomCountry();
+});
+
+getRandomCountry();
+
 
 //✅ Task 4: UI/UX Styling
 // Apply consistent colors, fonts, and spacing across the site
