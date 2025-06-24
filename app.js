@@ -108,74 +108,73 @@ searchInput.addEventListener("keyup", (e) => {
 // Add "Try Another" button to fetch a new random flag
 // This resets the game and shows a different country
 
-const flagImage = document.querySelector("#Guess img");
-const inputGuess = document.querySelector(".flaginput input");
-const submitButton = document.querySelector("#submitGuess");
-const hintButton = document.querySelector("#hintBtn");
-const tryAnotherButton = document.querySelector("#anotherBtn");
+const flagImage = document.getElementById("flagImage");
+// console.log(flagImage);
+const inputGuess = document.getElementById("guessInput");
+const submitButton = document.getElementById("submitGuess");
+const hintButton = document.getElementById("hintBtn");
+const tryAnotherButton = document.getElementById("anotherBtn");
 
 let correctCountry = "";
 let hintUsed = false;
 
+const countryCodes = [
+  "dz", "ao", "bj", "bw", "bf", "bi", "cv", "cm", "cf", "td", "km", "cd", "cg", "ci",
+  "dj", "eg", "gq", "er", "et", "ga", "gm", "gh", "gn", "gw", "gy", "ht", "hn", "id",
+  "iq", "ir", "jo", "ke", "kw", "lb", "lr", "ly", "mg", "mw", "ml", "mr", "mu", "yt",
+  "ma", "mz", "na", "ne", "ng", "om", "ps", "qa", "rw", "sa", "sn", "sc", "sl", "so",
+  "sd", "ss", "st", "sy", "td", "tg", "tn", "tz", "ug", "eh", "ye", "zm", "zw"
+];
+
 function getRandomCountry() {
-  fetch("https://restcountries.com/v3.1/all")
+  const randomIndex = Math.floor(Math.random() * countryCodes.length);
+  const countryCode = countryCodes[randomIndex];
+
+  fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`)
     .then(res => {
-      if (!res.ok) throw new Error("API Error");
+      if (!res.ok) throw new Error("Country fetch error");
       return res.json();
     })
     .then(data => {
-      
-      const validCountries = data.filter(
-        c => c.flags?.svg && c.name?.common
-      );
-
-      if (validCountries.length === 0) {
-        alert("Failed to load countries.");
-        return;
-      }
-
-      const randomIndex = Math.floor(Math.random() * validCountries.length);
-      const country = validCountries[randomIndex];
-
+      const country = data[0];
       correctCountry = country.name.common;
-      flagImage.src = country.flags.svg;
+      const flag = country.flags?.svg || country.flags?.png || "";
+
+      flagImage.src = flag;
       flagImage.alt = `${correctCountry} flag`;
       inputGuess.value = "";
       hintUsed = false;
 
-      console.log("Selected country:", correctCountry);
+      console.log("🗺️ Country:", correctCountry);
     })
     .catch(error => {
-      console.error("Fetch error:", error);
-      alert("Something went wrong while loading countries.");
+      console.error("Error loading country:", error);
+      alert("Error loading country. Please try again.");
     });
 }
 
 submitButton.addEventListener("click", () => {
-  const userGuess = inputGuess.value.trim().toLowerCase();
-  if (!userGuess) return;
+  const guess = inputGuess.value.trim().toLowerCase();
+  if (!guess) return;
 
-  if (userGuess === correctCountry.toLowerCase()) {
+  if (guess === correctCountry.toLowerCase()) {
     alert("Correct!");
     getRandomCountry();
   } else {
-    alert("Incorrect. please Try again.");
+    alert("Incorrect. Try again.");
   }
 });
 
 hintButton.addEventListener("click", () => {
-  if (correctCountry) {
-    const hint = correctCountry[0] + "*".repeat(correctCountry.length - 1);
-    alert(`Hint: ${hint}`);
-    hintUsed = true;
-  }
+  if (!correctCountry) return;
+  const hint = correctCountry[0] + "*".repeat(correctCountry.length - 1);
+  alert("Hint: " + hint);
+  hintUsed = true;
 });
 
-tryAnotherButton.addEventListener("click", () => {
-  getRandomCountry();
-});
-
+tryAnotherButton.addEventListener("click", getRandomCountry);
 getRandomCountry();
+
 
 
 //✅ Task 4: UI/UX Styling

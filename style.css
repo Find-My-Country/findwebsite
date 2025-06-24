@@ -81,11 +81,11 @@ body{
 .container .card .Guess-country{
     width: 100%;
     border-radius: 10px;
-    /* background-color: red; */
 }
 .container .card .Guess-country img{
     width: 100%;
-    height: 200px;
+    height: auto;
+    object-fit: contain;
 }
 .container .card  .flaginput{
     padding: 10px 20px;
