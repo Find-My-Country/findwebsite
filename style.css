@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
@@ -11,85 +11,85 @@ body {
   justify-content: center;
   background-color: #e0eefe;
   min-height: 100vh;
+  padding: 20px;
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 500px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.container .card {
+.card {
   background-color: white;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo_country {
   font-size: 2rem;
-  text-align: center;
   color: blue;
+  text-align: center;
 }
 
 .title h1 {
   text-align: center;
+  font-size: 1.5rem;
 }
 
 .title p {
   text-align: center;
-  color: rgba(25, 24, 24, 0.861);
-  margin-top: 10px;
-  font-size: 13px;
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 5px;
 }
 
 .search_bar {
-  width: 100%;
-  background-color: white;
-  padding: 10px;
+  background: white;
+  border: 1px solid #ccc;
   border-radius: 30px;
+  padding: 10px 15px;
   display: flex;
   align-items: center;
   gap: 10px;
-  border: 1px solid #ccc;
 }
 
 .search_bar input {
-  width: 100%;
-  outline: none;
+  flex: 1;
   border: none;
+  outline: none;
   font-size: 14px;
   font-weight: 600;
 }
 
 .image img {
   width: 100%;
-  height: auto;
-  object-fit: cover;
   border-radius: 10px 10px 0 0;
+  object-fit: cover;
 }
 
 .info {
   font-size: 14px;
-  padding: 5px 0;
+  padding: 5px 10px;
   display: flex;
   align-items: center;
   gap: 5px;
+  flex-wrap: wrap;
 }
 
 .info h2 {
-  font-size: 1.5em;
+  font-size: 1.4rem;
   margin-bottom: 5px;
 }
 
 .info span:last-child {
-  font-weight: 900;
+  font-weight: bold;
 }
 
 .info i {
@@ -98,40 +98,36 @@ body {
 
 .Guess-country img {
   width: 100%;
-  height: 200px;
+  height: auto;
   object-fit: cover;
   border-radius: 10px;
 }
 
-.flaginput {
-  padding: 10px 0;
-}
-
 .flaginput input {
   width: 100%;
-  height: 35px;
-  font-size: 14px;
-  font-weight: 700;
-  outline: none;
-  padding-left: 10px;
+  padding: 8px 10px;
+  font-size: 15px;
+  font-weight: bold;
   border: 1px solid #ccc;
   border-radius: 5px;
+  outline: none;
 }
 
 .btn {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .btn button {
   flex: 1;
-  height: 35px;
+  padding: 10px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  border: none;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .btn button:first-child {
@@ -139,23 +135,40 @@ body {
   color: white;
 }
 
-.othercountrybtn {
-  margin-top: 10px;
+.btn button:last-child {
+  background-color: #f3f3f3;
 }
 
 .othercountrybtn button {
   width: 100%;
   padding: 10px;
-  border: none;
   border-radius: 5px;
-  cursor: pointer;
-  background-color: #f2f2f2;
+  background-color: #e5e5e5;
   font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     width: 95%;
+  }
+
+  .title h1 {
+    font-size: 1.3rem;
+  }
+
+  .info {
+    font-size: 13px;
+  }
+
+  .btn {
+    flex-direction: column;
+  }
+
+  .btn button {
+    width: 100%;
   }
 }
