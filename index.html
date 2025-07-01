@@ -10,6 +10,20 @@
 
 </head>
 <body>
+  <!-- 🌍 Modern Header Section -->
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo">Find Your Country</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav class="nav">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
   <!-- container -->
    <div class="container">
       <!-- top_bar -->
@@ -84,5 +98,12 @@
      </div>
    </div>
    <script type="text/javascript" src="app.js"></script>
+   <script>
+  function toggleMenu() {
+    const nav = document.querySelector('.nav');
+    nav.classList.toggle('show');
+  }
+</script>
+
 </body>
 </html>
