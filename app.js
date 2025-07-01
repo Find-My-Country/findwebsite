@@ -22,6 +22,40 @@
 
 // Add a link or button labeled "View on Map"
 // When clicked, open Google Maps with the country's location
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  function toggleMenu() {
+    const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", !isExpanded);
+    navLinks.classList.toggle("show");
+  }
+
+  menuToggle.addEventListener("click", toggleMenu);
+
+  // Close menu if clicking outside nav
+  document.addEventListener("click", (e) => {
+    if (
+      !navLinks.contains(e.target) &&
+      !menuToggle.contains(e.target) &&
+      navLinks.classList.contains("show")
+    ) {
+      menuToggle.setAttribute("aria-expanded", false);
+      navLinks.classList.remove("show");
+    }
+  });
+
+  // Close menu on ESC key press
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && navLinks.classList.contains("show")) {
+      menuToggle.setAttribute("aria-expanded", false);
+      navLinks.classList.remove("show");
+      menuToggle.focus();
+    }
+  });
+});
+
 
 const searchInput = document.getElementById("searchInput");
 const countryInfoDiv = document.getElementById("country-info");
